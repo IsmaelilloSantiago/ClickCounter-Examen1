@@ -15,11 +15,19 @@ public class CounterModel implements CounterContract.Model {
   @Override
   public String aumentarCounter( String data){
     int a = Integer.parseInt(data);
-    a ++;
-    this.data = a + "";
+    if(a < 9 ){
+      a ++;
+      this.data = a + "";
+
+    }else{
+      this.data = 0 + "";
+
+    }
     return  this.data;
 
+
   }
+
 
   @Override
   public String getStoredData() {
