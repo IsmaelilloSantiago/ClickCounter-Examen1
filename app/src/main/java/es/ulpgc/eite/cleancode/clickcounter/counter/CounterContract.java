@@ -37,6 +37,9 @@ public interface CounterContract {
     String aumentarCounter( String data);
     String getClicks();
     String aumentarClicks( String data);
+
+    String resetearCuenta();
+    String resetearClicks();
   }
 
 }

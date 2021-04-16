@@ -7,4 +7,5 @@ public class CounterViewModel {
   public String clicks;
   boolean resetEnable;
   boolean clickEnable;
+  String valorclicks;
 }

@@ -52,6 +52,19 @@ public class CounterModel implements CounterContract.Model {
   }
 
   @Override
+  public String resetearCuenta() {
+    this.data = 0 + "";
+    return this.data;
+  }
+  @Override
+  public String resetearClicks() {
+    this.clicks = 0 + "";
+    return this.clicks;
+  }
+
+
+
+  @Override
   public void onRestartScreen(String data) {
     // Log.e(TAG, "onRestartScreen()");
   }

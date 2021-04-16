@@ -25,7 +25,7 @@ public class ClicksPresenter implements ClicksContract.Presenter {
 
   @Override
   public void onStart() {
-    // Log.e(TAG, "onStart()");
+    Log.e(TAG, "onStart()");
     state.hareseteado = false;
     state.clearActivo = true;
 
@@ -39,7 +39,9 @@ public class ClicksPresenter implements ClicksContract.Presenter {
 
     // use passed state if is necessary
     CounterToClicksState savedState = getStateFromPreviousScreen();
+
     if (savedState != null) {
+      Log.e(TAG, savedState.data);
 
       // update the model if is necessary
       model.onDataFromPreviousScreen(savedState.data);
@@ -88,6 +90,8 @@ public class ClicksPresenter implements ClicksContract.Presenter {
     // Log.e(TAG, "onBackPressed()");
     ClicksToCounterState estado = new ClicksToCounterState();
     estado.reseteado = state.hareseteado;
+    state.valorClicks = state.data;
+    Log.e(TAG, "VALOR CLICKS: " + state.valorClicks);
     passStateToPreviousScreen(estado);
     Log.e(TAG, estado.reseteado + "");
 
@@ -106,8 +110,8 @@ public class ClicksPresenter implements ClicksContract.Presenter {
   @Override
   public void onClearPressed() {
     Log.e(TAG, "onClearPressed()");
-
-    state.data = 0 + ""; //hardcodeado si da tiempo lo cambio OJO
+    model.ponerA0();
+    state.data = model.ponerA0();
     state.hareseteado = true;
     state.clearActivo = false;
     onResume();

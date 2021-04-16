@@ -6,4 +6,5 @@ public class ClicksViewModel {
   public String data;
   public boolean hareseteado;
   public boolean clearActivo;
+  String valorClicks;
 }

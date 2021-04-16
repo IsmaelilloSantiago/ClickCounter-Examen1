@@ -70,7 +70,7 @@ public class CounterPresenter implements CounterContract.Presenter {
     if (savedState != null) {
         if(savedState.reseteado){
           Log.e(TAG, "entra");
-          state.clicks = 0 + "";
+          state.clicks = model.resetearClicks();
         }
       // update the model if is necessary
       //model.onDataFromNextScreen(savedState.data);
@@ -120,17 +120,26 @@ public class CounterPresenter implements CounterContract.Presenter {
   @Override
   public void onResetPressed() {
     Log.e(TAG, "onResetPressed()");
-
-    state.data = 0 + "";
+    state.data = model.resetearCuenta();
+    //state.data = 0 + "";
     state.resetEnable = false;
-    onResume();
+    view.get().onDataUpdated(state);
+
+    //onResume();
 
   }
 
   @Override
   public void onIncrementPressed() {
-    state.resetEnable = true;
-    state.clickEnable = true;
+
+    if(!state.data.equals("" + 9)){
+      state.resetEnable = true;
+      state.clickEnable = true;
+    }else{
+      state.resetEnable = false;
+    }
+
+
     Log.e(TAG, "onIncrementPressed()");
     String dato = model.getStoredData();
     Log.e(TAG, dato);

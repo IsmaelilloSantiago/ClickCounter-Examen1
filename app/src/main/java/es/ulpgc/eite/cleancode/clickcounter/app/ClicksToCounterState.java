@@ -4,4 +4,5 @@ public class ClicksToCounterState {
 
   public String data;
   public boolean reseteado;
+  String valorClicks;
 }

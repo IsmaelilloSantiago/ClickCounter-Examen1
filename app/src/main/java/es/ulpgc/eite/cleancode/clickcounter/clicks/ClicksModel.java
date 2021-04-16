@@ -32,4 +32,10 @@ public class ClicksModel implements ClicksContract.Model {
   public void onDataFromPreviousScreen(String data) {
     // Log.e(TAG, "onDataFromPreviousScreen()");
   }
+
+  @Override
+  public String ponerA0() {
+    this.data = 0 + "";
+    return this.data;
+  }
 }
