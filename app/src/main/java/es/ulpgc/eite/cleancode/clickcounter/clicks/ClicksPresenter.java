@@ -27,6 +27,7 @@ public class ClicksPresenter implements ClicksContract.Presenter {
   public void onStart() {
     // Log.e(TAG, "onStart()");
     state.hareseteado = false;
+    state.clearActivo = true;
 
     // initialize the state if is necessary
     if (state == null) {
@@ -106,8 +107,9 @@ public class ClicksPresenter implements ClicksContract.Presenter {
   public void onClearPressed() {
     Log.e(TAG, "onClearPressed()");
 
-    state.data = 0 + "";
+    state.data = 0 + ""; //hardcodeado si da tiempo lo cambio OJO
     state.hareseteado = true;
+    state.clearActivo = false;
     onResume();
   }
 

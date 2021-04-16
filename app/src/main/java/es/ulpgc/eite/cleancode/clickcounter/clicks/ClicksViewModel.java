@@ -5,4 +5,5 @@ public class ClicksViewModel {
   // put the view state here
   public String data;
   public boolean hareseteado;
+  public boolean clearActivo;
 }

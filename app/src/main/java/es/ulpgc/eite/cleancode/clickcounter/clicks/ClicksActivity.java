@@ -72,6 +72,7 @@ public class ClicksActivity
 
     // deal with the data
     ((TextView) findViewById(R.id.tvClicks)).setText(viewModel.data);
+    findViewById(R.id.btnClear).setEnabled(viewModel.clearActivo);
   }
 
   @Override
