@@ -13,6 +13,15 @@ public class CounterModel implements CounterContract.Model {
   }
 
   @Override
+  public String aumentarCounter( String data){
+    int a = Integer.parseInt(data);
+    a ++;
+    this.data = a + "";
+    return  this.data;
+
+  }
+
+  @Override
   public String getStoredData() {
     // Log.e(TAG, "getStoredData()");
     return data;
