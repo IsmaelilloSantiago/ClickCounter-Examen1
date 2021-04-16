@@ -94,6 +94,9 @@ public class CounterActivity
 
     // deal with the data
     ((TextView) findViewById(R.id.tvCounter)).setText(viewModel.data);
+    //findViewById(R.id.option1Button).setEnabled(viewModel.optionEnabled);
+    findViewById(R.id.btnReset).setEnabled(viewModel.resetEnable);
+    findViewById(R.id.btnClicks).setEnabled(viewModel.clickEnable);
   }
 
   @Override

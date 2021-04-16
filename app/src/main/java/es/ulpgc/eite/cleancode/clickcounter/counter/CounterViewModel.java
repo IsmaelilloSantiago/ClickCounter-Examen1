@@ -4,4 +4,7 @@ public class CounterViewModel {
 
   // put the view state here
   public String data;
+  public String clicks;
+  boolean resetEnable;
+  boolean clickEnable;
 }

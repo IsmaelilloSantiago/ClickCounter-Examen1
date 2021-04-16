@@ -7,9 +7,12 @@ public class CounterModel implements CounterContract.Model {
   public static String TAG = CounterModel.class.getSimpleName();
 
   private String data;
+  private String clicks;
 
-  public CounterModel(String data) {
+  public CounterModel(String data, String clicks) {
+
     this.data = data;
+    this.clicks = clicks;
   }
 
   @Override
@@ -25,7 +28,6 @@ public class CounterModel implements CounterContract.Model {
     }
     return  this.data;
 
-
   }
 
 
@@ -33,6 +35,20 @@ public class CounterModel implements CounterContract.Model {
   public String getStoredData() {
     // Log.e(TAG, "getStoredData()");
     return data;
+  }
+  @Override
+  public String getClicks() {
+    // Log.e(TAG, "getStoredData()");
+    return clicks;
+  }
+
+  @Override
+  public String aumentarClicks( String data){
+    int a = Integer.parseInt(data);
+      a ++;
+      this.clicks = a + "";
+       return  this.clicks;
+
   }
 
   @Override

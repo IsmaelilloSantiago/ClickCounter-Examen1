@@ -35,6 +35,8 @@ public interface CounterContract {
     void onRestartScreen(String data);
     void onDataFromPreviousScreen(String data);
     String aumentarCounter( String data);
+    String getClicks();
+    String aumentarClicks( String data);
   }
 
 }

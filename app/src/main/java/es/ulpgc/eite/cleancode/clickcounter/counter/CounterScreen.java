@@ -15,11 +15,12 @@ public class CounterScreen {
         new WeakReference<>((FragmentActivity) view);
 
     String data = context.get().getString(R.string.counter_value);
+    String clicks = context.get().getString(R.string.counter_value);
 
     AppMediator mediator = AppMediator.getInstance();
 
     CounterContract.Presenter presenter = new CounterPresenter(mediator);
-    CounterContract.Model model = new CounterModel(data);
+    CounterContract.Model model = new CounterModel(data,clicks);
     presenter.injectModel(model);
     presenter.injectView(new WeakReference<>(view));
 

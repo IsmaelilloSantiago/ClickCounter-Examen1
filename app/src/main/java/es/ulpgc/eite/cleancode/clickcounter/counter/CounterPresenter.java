@@ -35,6 +35,8 @@ public class CounterPresenter implements CounterContract.Presenter {
 
     // call the model and update the state
     state.data = model.getStoredData();
+    state.resetEnable = false;
+    state.clickEnable = false;
 
     /*
     // use passed state if is necessary
@@ -60,17 +62,21 @@ public class CounterPresenter implements CounterContract.Presenter {
 
   @Override
   public void onResume() {
-    // Log.e(TAG, "onResume()");
+    Log.e(TAG, "onResume()");
 
     // use passed state if is necessary
     ClicksToCounterState savedState = getStateFromNextScreen();
-    if (savedState != null) {
 
+    if (savedState != null) {
+        if(savedState.reseteado){
+          Log.e(TAG, "entra");
+          state.clicks = 0 + "";
+        }
       // update the model if is necessary
-      model.onDataFromNextScreen(savedState.data);
+      //model.onDataFromNextScreen(savedState.data);
 
       // update the state if is necessary
-      state.data = savedState.data;
+      //state.data = savedState.data;
     }
 
     // call the model and update the state
@@ -101,8 +107,10 @@ public class CounterPresenter implements CounterContract.Presenter {
   public void onClicksPressed() {
     Log.e(TAG, "onClicksPressed()");
 
+
+
     CounterToClicksState estado = new CounterToClicksState();
-    estado.data = state.data;
+    estado.data = state.clicks;
     Log.e(TAG, estado.data);
     passStateToNextScreen(estado);
     view.get().navigateToNextScreen();
@@ -112,16 +120,29 @@ public class CounterPresenter implements CounterContract.Presenter {
   @Override
   public void onResetPressed() {
     Log.e(TAG, "onResetPressed()");
+
+    state.data = 0 + "";
+    state.resetEnable = false;
+    onResume();
+
   }
 
   @Override
   public void onIncrementPressed() {
+    state.resetEnable = true;
+    state.clickEnable = true;
     Log.e(TAG, "onIncrementPressed()");
     String dato = model.getStoredData();
     Log.e(TAG, dato);
+    String clicks = model.getClicks();
+    Log.e(TAG, clicks);
+
+
+    state.clicks = model.aumentarClicks(clicks);
     state.data = model.aumentarCounter(dato);
 
     onResume();
+
   }
 
   private void passStateToNextScreen(CounterToClicksState state) {
